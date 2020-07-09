@@ -1,0 +1,30 @@
+//注意proto3与proto2的写法有些不同
+syntax = "proto3";
+
+package pb;
+
+option go_package = "pb;pb";
+
+// 手机类型
+// 枚举类型第一个字段必须为0
+enum PhoneType {
+	Home = 0;
+	WORK = 1;
+}
+
+//号码
+message Phone {
+	PhoneType type = 1;
+	string number = 2;
+}
+
+message Person {
+	int32 id = 1;
+	string name = 2;
+	repeated Phone phones = 3;
+}
+
+message ContactBook {
+	repeated Person persons = 1;
+}
+
